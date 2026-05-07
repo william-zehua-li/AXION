@@ -269,7 +269,7 @@ Transformer achieves better performance in tasks such as sequence-to-sequence mo
 
 ## Design notes
 
-**Two models, one pipeline.** GPT-2 is small and fast — it drives the loop cheaply. Qwen handles the final answer where instruction-following and evidence grounding matter. The two models never share weights.
+**Two models, one pipeline.** GPT-2 is small and fast — it drives the loop cheaply. Qwen handles the final answer where instruction-following and evidence grounding matter. The two models never share weights. At 0.5B parameters, Qwen is intentionally small so the demo runs on a laptop without a GPU — quality on open-ended reasoning is limited (Sample 4 shows this: the output is verbose and partly self-contradictory). Swap in a larger instruction-tuned model via answer_model_name in the config for cleaner outputs.
 
 **Mem tokens are not a retrieval store.** They are learnable attention bias vectors that persist only for the duration of one run. They let the model carry soft context between ticks without storing facts. Persistent facts go in the JSONL knowledge store.
 
