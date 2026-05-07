@@ -1,0 +1,6 @@
+# Training utilities: trainer loop and hyperparameter config
+
+from .config import Config
+from .trainer import Trainer
+
+__all__ = ["Config", "Trainer"]
